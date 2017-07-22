@@ -1,3 +1,4 @@
+require('dotenv').load()
 const express = require('express')
 const keystone = require('keystone')
 const next = require('next')
@@ -28,13 +29,19 @@ app.prepare()
   keystone.init({
     'name': 'Eureka Mastering',
     'brand': 'Eureka Mastering',
-    'session': false,
+    'session store': 'mongo',
     'updates': 'updates',
     'auth': true,
     'user model': 'User',
     'auto update': true,
     'cookie secret': cookieSecret,
     'admin path': 'admin',
+  })
+
+  keystone.set('cloudinary config', {
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET
   })
 
   keystone.import('models')

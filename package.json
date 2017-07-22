@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
     "keystone": "^4.0.0-beta.1",
     "multer": "^0.1.8",
     "next": "^2.4.7",
