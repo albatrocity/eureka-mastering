@@ -9,12 +9,12 @@ const Page = new keystone.List('Page', {
   autokey: { path: 'slug', from: 'name', unique: true },
   defaultSort: 'name',
   track: true,
-  nocreate: true,
+  nocreate: false,
   nodelete: true,
 })
 
 Page.add({
-  name: { type: Types.Name, required: true, index: true },
+  name: { type: Types.Text, required: true, index: true },
   slug: { type: Types.Text },
   content: { type: Types.Html, wysiwyg: true, initial: true },
   images: {

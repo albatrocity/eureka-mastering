@@ -1,0 +1,8 @@
+export const gray = '#f3f3f3'
+export const grayShade1 = '#656666'
+export const grayShade2 = '#322f2f'
+export const teal = '#00a5bc'
+export const orange = '#dc8a27'
+export const orangeShade1 = '#d1771e'
+export const white = '#fff'
+export const red = 'red'

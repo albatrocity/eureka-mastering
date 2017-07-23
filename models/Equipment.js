@@ -10,7 +10,7 @@ const Equipment = new keystone.List('Equipment', {
 })
 
 Equipment.add({
-  name: { type: Types.Name, required: true, index: true },
+  name: { type: Types.Text, required: true, index: true },
   description: { type: Types.Html, wysiwyg: true, initial: true },
   url: { type: Types.Url, initial: true },
 })

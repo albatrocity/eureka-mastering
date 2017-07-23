@@ -1,16 +1,11 @@
 import Header from './Header'
-
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD'
-}
+import Box from './Box'
 
 const MainLayout = (props) => (
-  <div style={layoutStyle}>
+  <Box>
     <Header />
     {props.children}
-  </div>
+  </Box>
 )
 
 export default MainLayout

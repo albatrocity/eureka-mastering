@@ -7,6 +7,7 @@ const multer = require('multer')
 const body = require('body-parser')
 const session = require('express-session')
 const serve = require('serve-static')
+const api = require('./api')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -50,6 +51,7 @@ app.prepare()
   keystone.set('app', server)
   server.use('/admin', require('keystone/admin/server/app/createStaticRouter.js')(keystone))
   server.use('/admin', require('keystone/admin/server/app/createDynamicRouter.js')(keystone))
+  api(server, keystone)
 
   server.get('*', (req, res) => {
     return handle(req, res)

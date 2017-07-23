@@ -1,18 +1,18 @@
 import Link from 'next/link'
-
-const linkStyle = {
-  marginRight: 15
-}
+import Box from './Box'
 
 const Header = () => (
-    <div>
-        <Link href="/">
-          <a style={linkStyle}>Home</a>
-        </Link>
-        <Link href="/about">
-          <a style={linkStyle}>About</a>
-        </Link>
-    </div>
+  <div>
+
+    <Box>
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
+    </Box>
+  </div>
 )
 
 export default Header
