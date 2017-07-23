@@ -5,9 +5,11 @@ import { apiUrl } from '../config/urls'
 
 import Client from '../components/Client'
 import Service from '../components/Service'
+import ImageCarousel from '../components/ImageCarousel'
 
 const Index = ({page, clients, services}) => (
   <MainLayout>
+    <ImageCarousel images={page.images} />
     <div dangerouslySetInnerHTML={{__html: page.content}} />
     { clients.map(c => <Client key={c._id} client={c} />)}
     { services.map(c => <Service key={c._id} service={c} />)}

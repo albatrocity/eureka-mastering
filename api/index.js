@@ -16,6 +16,15 @@ const servePage = (req, res) => {
   }
 }
 
+const sizeImage = (response) => {
+  return Object.assign(response, {
+    images: response.images.map(image => ({
+      url: image.fill(1000,400),
+      '_id': image['_id']
+    }))
+  })
+}
+
 const serveHomePage = (req, res) => {
   const Page = req.keystone.list('Page')
   const Service = req.keystone.list('Service')
@@ -28,7 +37,7 @@ const serveHomePage = (req, res) => {
   ])
     .then((results) => {
       res.json({
-        page: results[0],
+        page: sizeImage(results[0]),
         services: results[1],
         clients: results[2],
       })
