@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Box from './Box'
+import Box from 'react-boxen'
 
 const Client = ({ client }) => (
   <li>{client.name}</li>

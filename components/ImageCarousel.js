@@ -1,7 +1,8 @@
 import Slider from 'react-slick'
 
 import Link from 'next/link'
-import Box from './Box'
+import Box from 'react-boxen'
+import styled from 'styled-components'
 
 const config = {
   arrows: false,
@@ -12,12 +13,28 @@ const config = {
   useCSS: true,
   lazyLoad: false,
   draggable: false,
+  adaptiveHeight: false,
 }
 
+const StyledContainer = styled.div`
+  width: 100%;
+  heiht: 100px;
+  overflow: hidden;
+  background: yellow
+  display: block
+`
+
 const ImageCarousel = ({ images }) => (
-  <Slider {...config} style={{height: '200px'}}>
-    { images.map(i => <img src={i.url} />)}
-  </Slider>
+  <StyledContainer>
+  
+  </StyledContainer>
 )
+
+// { (images && images.length > 0) &&
+//   <Slider {...config}>
+//     { images.map(i => <img key={i._id} src={i.url} />)}
+//   </Slider>
+// }
+
 
 export default ImageCarousel

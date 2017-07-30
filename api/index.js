@@ -32,14 +32,16 @@ const serveHomePage = (req, res) => {
 
   return Promise.all([
     Page.model.findOne({slug: req.params.slug}),
+    Page.model.findOne({slug: 'equipment'}),
     Service.model.find({}).sort('sortOrder'),
     Client.model.find({}).sort('sortOrder')
   ])
     .then((results) => {
       res.json({
         page: sizeImage(results[0]),
-        services: results[1],
-        clients: results[2],
+        equipment: sizeImage(results[1]),
+        services: results[2],
+        clients: results[3],
       })
     })
     .catch((err) => res.error(err))

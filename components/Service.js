@@ -1,12 +1,25 @@
 import Link from 'next/link'
-import Box from './Box'
+import Box from 'react-boxen'
+import styled from 'styled-components'
+import { grayShade1, gray } from '../config/colors'
+import units from '../config/units'
+
+const StyledBox = styled(Box)`
+  border-bottom: 1px solid ${gray};
+`
+
+const Pricing = styled.p`
+  color: ${grayShade1};
+  background: ${gray};
+  padding: ${units[6]};
+`
 
 const Service = ({ service }) => (
-  <Box>
-    <h3>{service.name}</h3>
+  <StyledBox>
+    <h2>{service.name}</h2>
     <div dangerouslySetInnerHTML={{__html: service.description}} />
-    <p>{ service.pricing }</p>
-  </Box>
+    <Pricing>{ service.pricing }</Pricing>
+  </StyledBox>
 )
 
 export default Service
