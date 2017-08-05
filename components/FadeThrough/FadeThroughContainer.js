@@ -37,6 +37,7 @@ export default class FadeThroughContainer extends Component {
         <FadeThroughComponent
           activeIndex={ this.state.activeIndex }
           delay={ this.props.delay }
+          fadeDuration={ this.props.fadeDuration || 3}
           style={{background: 'blue'}}
         >
           { this.props.children }
@@ -49,5 +50,6 @@ export default class FadeThroughContainer extends Component {
 FadeThroughContainer.propTypes = {
   width: React.PropTypes.string.isRequired,
   height: React.PropTypes.string.isRequired,
-  delay: React.PropTypes.number.isRequired
+  delay: React.PropTypes.number.isRequired,
+  fadeDuration: React.PropTypes.number,
 }

@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Box from 'react-boxen'
 import units from '../config/units'
-import { blue, blueOverlay, gray } from '../config/colors'
+import { blue, blueOverlay, gray, grayTrans } from '../config/colors'
 
 const StyledAnchor = styled.a`
-  color: ${p => p.isActive ? gray : blue };
+  color: ${p => p.isActive ? gray : grayTrans };
   background: ${p => p.isActive ? blueOverlay : 'transparent'};
   transition: 0.4s all;
   padding: 0.5em 1em;

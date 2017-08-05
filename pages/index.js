@@ -4,7 +4,7 @@ import MainLayout from '../components/MainLayout'
 import fetch from 'isomorphic-unfetch'
 import { apiUrl } from '../config/urls'
 import media from '../config/media'
-import { gray } from '../config/colors'
+import { gray, black } from '../config/colors'
 
 import Client from '../components/Client'
 import Service from '../components/Service'
@@ -13,6 +13,7 @@ import Heading from '../components/Text/Heading'
 import ConstrainedContainer from '../components/ConstrainedContainer'
 import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
+import Social from '../components/Social'
 
 const About = styled.div`
   margin-top: 6em;
@@ -27,13 +28,16 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, clients, services, equipment, projects}) => (
-  <MainLayout>
+const Index = ({page, clients, services, equipment, projects, contact}) => (
+  <MainLayout contact={contact}>
     <div id='about'>
-      <ImageCarousel images={page.images} opacity='0.6'/>
+      <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
       <SiteTitle>Eureka Mastering</SiteTitle>
       <ConstrainedContainer>
-        <About dangerouslySetInnerHTML={{__html: page.content}} />
+        <About>
+          <Social/>
+          <div dangerouslySetInnerHTML={{__html: page.content}} />
+        </About>
       </ConstrainedContainer>
     </div>
     <Section id='services'>
@@ -43,9 +47,20 @@ const Index = ({page, clients, services, equipment, projects}) => (
       </ConstrainedContainer>
     </Section>
     <Section id='equipment'>
-      <ImageCarousel images={equipment.images} />
       <ConstrainedContainer>
         <Heading>Equipment</Heading>
+      </ConstrainedContainer>
+      { equipment.images.length > 0 &&
+        <div style={{margin: '2em 0', backgroundColor: black}} >
+          <ImageCarousel
+            images={equipment.images}
+            height={800}
+            fadeDuration={1.8}
+            delay={4000}
+            />
+        </div>
+      }
+      <ConstrainedContainer>
         <div dangerouslySetInnerHTML={{__html: equipment.content}} />
       </ConstrainedContainer>
     </Section>
@@ -57,8 +72,8 @@ const Index = ({page, clients, services, equipment, projects}) => (
       <ConstrainedContainer>
         <div>{ clients.map((c, i) => {
           return (
-            <span>
-              <Client key={c._id} client={c} />
+            <span key={c._id}>
+              <Client client={c} />
               { (i < clients.length-1) ? ', ' : '' }
             </span>
           )

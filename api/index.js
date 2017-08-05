@@ -16,10 +16,19 @@ const servePage = (req, res) => {
   }
 }
 
-const sizeImage = (response) => {
+const fillImage = (response, width, height) => {
   return Object.assign(response, {
     images: response.images.map(image => ({
-      url: image.fill(1800,500),
+      url: image.fill(width || 1200, height || 800),
+      '_id': image['_id']
+    }))
+  })
+}
+
+const sizeImage = (response, width, height) => {
+  return Object.assign(response, {
+    images: response.images.map(image => ({
+      url: image.limit(width || 1400, height || 1400),
       '_id': image['_id']
     }))
   })
@@ -36,18 +45,22 @@ const serveHomePage = (req, res) => {
     Page.model.findOne({slug: 'equipment'}),
     Service.model.find({}).sort('sortOrder'),
     Client.model.find({}).sort('sortOrder'),
-    Project.model.find({}).sort('sortOrder')
+    Project.model.find({}).sort('sortOrder'),
+    Page.model.findOne({slug: 'contact'}),
   ])
     .then((results) => {
       res.json({
-        page: sizeImage(results[0]),
+        page: fillImage(results[0]),
         equipment: sizeImage(results[1]),
         services: results[2],
         clients: results[3],
         projects: results[4],
+        contact: results[5]
       })
     })
-    .catch((err) => res.error(err))
+    .catch((err) => {
+      console.log(err); res.json(err)
+    })
 }
 
 const serveEquipment = (req, res) => {

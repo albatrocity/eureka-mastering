@@ -6,14 +6,14 @@ export default class FadeThroughComponent extends Component {
   render() {
     const inactiveStyle = {
       position: 'absolute',
-      transition: 'opacity 3s',
+      transition: `opacity ${this.props.fadeDuration || 3}s`,
       opacity: '0',
       width: '100%'
     }
 
     const activeStyle = {
       position: 'absolute',
-      transition: 'opacity 3s',
+      transition: `opacity ${this.props.fadeDuration || 3}s`,
       opacity: '1',
       width: '100%'
     }
@@ -34,5 +34,5 @@ export default class FadeThroughComponent extends Component {
 }
 
 FadeThroughComponent.defaultProps = {
-  activeIndex: 0
+  activeIndex: 0,
 }

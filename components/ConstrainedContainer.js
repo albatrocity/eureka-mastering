@@ -5,7 +5,7 @@ import units from '../config/units'
 import styled from 'styled-components'
 
 const StyledContainer = styled(Box)`
-  max-width: 600px;
+  max-width: 650px;
   margin-left: auto;
   margin-right: auto;
   padding-right: ${units[6]};

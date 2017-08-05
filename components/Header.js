@@ -12,7 +12,7 @@ const StyledSpy = styled(Scrollspy)`
 `
 
 const StyledHeader = styled.div`
-  background: ${p => p.isSticky ? gray : 'transparent' };
+  background: ${blue};
   transition: 0.4s all;
   border-bottom: 2px solid ${blue}
 `
