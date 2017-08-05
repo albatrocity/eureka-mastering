@@ -1,40 +1,49 @@
-import Slider from 'react-slick'
-
-import Link from 'next/link'
-import Box from 'react-boxen'
 import styled from 'styled-components'
 
+import FadeThrough from './FadeThrough/FadeThroughContainer'
+import Heading from './Text/Heading'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
+import Box from 'react-boxen'
+import media from '../config/media'
+
 const config = {
-  arrows: false,
-  autoplay: true,
-  fade: true,
-  swipe: false,
-  swipeToSlide: false,
-  useCSS: true,
-  lazyLoad: false,
-  draggable: false,
-  adaptiveHeight: false,
+  delay: 5000,
+  height: '400px',
+  width: '100%',
 }
 
 const StyledContainer = styled.div`
-  width: 100%;
-  heiht: 100px;
   overflow: hidden;
-  background: yellow
-  display: block
+  background: yellow;
+  display: block;
+  height: 400px;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  ${media.tablet`height: 200px; margin-bottom: -200px`}
+`
+const ImageContainer = styled.div`
+  height: 400px;
+  width: 100%;
 `
 
-const ImageCarousel = ({ images }) => (
-  <StyledContainer>
-  
-  </StyledContainer>
+const ImageCarousel = ({ images, children, opacity }) => (
+  <FadeThrough {...config}>
+    { images.map((img) => (
+      <StyledContainer key={img._id} style={{backgroundImage: `url(${img.url})`, opacity: opacity || 1}}>
+        { children }
+      </StyledContainer>
+    )
+    ) }
+
+  </FadeThrough>
 )
 
-// { (images && images.length > 0) &&
-//   <Slider {...config}>
-//     { images.map(i => <img key={i._id} src={i.url} />)}
-//   </Slider>
-// }
-
+ImageCarousel.propTypes = {
+  images: PropTypes.array,
+}
 
 export default ImageCarousel

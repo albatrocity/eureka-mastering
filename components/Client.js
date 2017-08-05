@@ -1,8 +1,12 @@
-import Link from 'next/link'
-import Box from 'react-boxen'
+import styled from 'styled-components'
+import { gray, grayShade1, grayShade2 } from '../config/colors'
+
+const ClientText = styled.span`
+  color: ${grayShade1};
+`
 
 const Client = ({ client }) => (
-  <li>{client.name}</li>
+  <ClientText>{client.name}</ClientText>
 )
 
 export default Client

@@ -19,7 +19,7 @@ const servePage = (req, res) => {
 const sizeImage = (response) => {
   return Object.assign(response, {
     images: response.images.map(image => ({
-      url: image.fill(1000,400),
+      url: image.fill(1800,500),
       '_id': image['_id']
     }))
   })
@@ -29,12 +29,14 @@ const serveHomePage = (req, res) => {
   const Page = req.keystone.list('Page')
   const Service = req.keystone.list('Service')
   const Client = req.keystone.list('Client')
+  const Project = req.keystone.list('Project')
 
   return Promise.all([
     Page.model.findOne({slug: req.params.slug}),
     Page.model.findOne({slug: 'equipment'}),
     Service.model.find({}).sort('sortOrder'),
-    Client.model.find({}).sort('sortOrder')
+    Client.model.find({}).sort('sortOrder'),
+    Project.model.find({}).sort('sortOrder')
   ])
     .then((results) => {
       res.json({
@@ -42,6 +44,7 @@ const serveHomePage = (req, res) => {
         equipment: sizeImage(results[1]),
         services: results[2],
         clients: results[3],
+        projects: results[4],
       })
     })
     .catch((err) => res.error(err))

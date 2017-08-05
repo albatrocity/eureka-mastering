@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { StickyContainer, Sticky } from 'react-sticky'
 
 const HeaderContainer = styled.div`
-  z-index: 100
+  z-index: 10
 `
 
 const StyledLayout = styled(Box)`

@@ -3,13 +3,13 @@ import { blue } from '../../config/colors'
 import units from '../../config/units'
 
 const H1 = styled.h1`
-  font-family: 'Titan One', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 3em;
   color: ${blue};
   margin-bottom: ${units[2]};
 `
 const H2 = styled.h1`
-  font-family: 'Titan One', cursive;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.25em;
   color: ${blue};
 `

@@ -11,6 +11,7 @@ const Project = new keystone.List('Project', {
 
 Project.add({
   title: { type: Types.Text, required: true, initial: true, index: true },
+  artist: { type: Types.Text, initial: true },
   description: { type: Types.Html, wysiwyg: true },
   image: {
     type: Types.CloudinaryImage,
