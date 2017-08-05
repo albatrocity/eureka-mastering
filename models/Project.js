@@ -26,5 +26,5 @@ Project.add({
 /**
  * Registration
  */
-Project.defaultColumns = 'name, url'
+Project.defaultColumns = 'title, artist'
 Project.register()
