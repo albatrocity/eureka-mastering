@@ -28,14 +28,14 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, clients, services, equipment, projects, contact}) => (
-  <MainLayout contact={contact}>
+const Index = ({page, clients, services, equipment, projects, contact, config}) => (
+  <MainLayout contact={contact} config={config}>
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
       <SiteTitle>Eureka Mastering</SiteTitle>
       <ConstrainedContainer>
         <About>
-          <Social/>
+          <Social color={config.main_color} />
           <div dangerouslySetInnerHTML={{__html: page.content}} />
         </About>
       </ConstrainedContainer>

@@ -7,9 +7,8 @@ import styled from 'styled-components'
 import ConstrainedContainer from './ConstrainedContainer'
 
 const StyledFooter = styled.div`
-  background: ${black};
+  background: ${props => props.color || black};
   transition: 0.4s all;
-  border-bottom: 2px solid ${blue}
   min-height: 200px;
   padding: 2em 0.4em;
   color: ${gray};
@@ -19,9 +18,8 @@ const StyledFooter = styled.div`
 `
 
 const Footer = (props) => {
-  console.log(props)
   return (
-    <StyledFooter>
+    <StyledFooter color={props.color}>
       <ConstrainedContainer>
         <div dangerouslySetInnerHTML={{__html: props.contact.content}} />
       </ConstrainedContainer>

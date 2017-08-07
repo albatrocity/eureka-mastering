@@ -9,7 +9,7 @@ const Page = new keystone.List('Page', {
   autokey: { path: 'slug', from: 'name', unique: true },
   defaultSort: 'name',
   track: true,
-  nocreate: false,
+  nocreate: true,
   nodelete: true,
 })
 

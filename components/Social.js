@@ -9,10 +9,10 @@ const style = {
   width: `${iconSize}px`,
 }
 
-const Social = () => (
+const Social = ({color}) => (
   <Box childSpacing='0.6em' childDirection='row' childJustify='flex-end'>
-    <SocialIcon style={style} color={blue} url="https://www.facebook.com/mikenoltemastering" />
-    <SocialIcon style={style} color={blue} url="http://instagram.com/eurekamastering" />
+    <SocialIcon style={style} color={color || blue} url="https://www.facebook.com/mikenoltemastering" />
+    <SocialIcon style={style} color={color || blue} url="http://instagram.com/eurekamastering" />
   </Box>
 )
 

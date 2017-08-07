@@ -12,14 +12,14 @@ const StyledSpy = styled(Scrollspy)`
 `
 
 const StyledHeader = styled.div`
-  background: ${blue};
+  background: ${props => props.color || blue};
   transition: 0.4s all;
-  border-bottom: 2px solid ${blue}
+  border-bottom: 2px solid ${props => props.color || blue};
 `
 
 const Header = (props) => {
   return (
-    <StyledHeader isSticky={props.isSticky}>
+    <StyledHeader color={props.color} isSticky={props.isSticky}>
       <ConstrainedContainer>
         <StyledSpy
           items={ ['about', 'services', 'equipment', 'discography'] }

@@ -39,6 +39,7 @@ const serveHomePage = (req, res) => {
   const Service = req.keystone.list('Service')
   const Client = req.keystone.list('Client')
   const Project = req.keystone.list('Project')
+  const Configuration = req.keystone.list('Configuration')
 
   return Promise.all([
     Page.model.findOne({slug: req.params.slug}),
@@ -47,6 +48,7 @@ const serveHomePage = (req, res) => {
     Client.model.find({}).sort('sortOrder'),
     Project.model.find({}).sort('sortOrder'),
     Page.model.findOne({slug: 'contact'}),
+    Configuration.model.findOne({active: true}),
   ])
     .then((results) => {
       res.json({
@@ -55,7 +57,8 @@ const serveHomePage = (req, res) => {
         services: results[2],
         clients: results[3],
         projects: results[4],
-        contact: results[5]
+        contact: results[5],
+        config: results[6],
       })
     })
     .catch((err) => {

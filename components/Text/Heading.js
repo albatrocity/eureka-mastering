@@ -5,21 +5,17 @@ import units from '../../config/units'
 const H1 = styled.h1`
   font-family: 'Montserrat', sans-serif;
   font-size: 3em;
-  color: ${blue};
   margin-bottom: ${units[2]};
 `
 const H2 = styled.h1`
   font-family: 'Montserrat', sans-serif;
   font-size: 2.25em;
-  color: ${blue};
 `
 const H3 = styled.h1`
   font-size: 1.75em;
-  color: ${blue};
 `
 const H4 = styled.h1`
   font-size: 1.125em;
-  color: ${blue};
 `
 
 const Heading = ({ level, children }) => {
