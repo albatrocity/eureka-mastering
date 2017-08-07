@@ -1,5 +1,6 @@
 // ./pages/_document.js
 import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
 import flush from 'styled-jsx/server'
 
 export default class MyDocument extends Document {
@@ -10,12 +11,14 @@ export default class MyDocument extends Document {
   }
 
   render () {
+    const sheet = new ServerStyleSheet()
+    const main = sheet.collectStyles(<Main />)
+    const styleTags = sheet.getStyleElement()
     return (
       <html>
         <Head>
           <link href="https://fonts.googleapis.com/css?family=Palanquin:100|Montserrat:900" rel="stylesheet"/>
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
-          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+          {styleTags}
         </Head>
         <body className="body" style={{margin: 0, padding: 0}}>
           <Main />
