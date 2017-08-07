@@ -5,10 +5,7 @@ const Types = keystone.Field.Types
  * Client Model
  * ==========
  */
-const Configuration = new keystone.List('Configuration', {
-  nocreate: true,
-  nodelete: true,
-})
+const Configuration = new keystone.List('Configuration')
 
 Configuration.add({
   name: { type: Types.Text, required: true, initial: true, default: 'Default' },
