@@ -32,7 +32,7 @@ const ProjectLink = styled.a`
 
 const projectEl = ({image, title, artist}) => (
   <div>
-    <Thumbnail src={image.url} />
+    { image && <Thumbnail src={image.url} /> }
     <ProjectName>{ title }</ProjectName>
     { artist && <ArtistName>{ artist }</ArtistName> }
   </div>
