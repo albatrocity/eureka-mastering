@@ -9,7 +9,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "start": "node server.js",
-    "prestart": "next build"
+    "postinstall": "next build"
   },
   "keywords": [],
   "author": "",
