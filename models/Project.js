@@ -1,5 +1,6 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
+const s3Storage = require('../config/s3Storage')
 
 /**
  * Client Model
@@ -18,6 +19,11 @@ Project.add({
     folder: 'projects',
     select: true,
     autoCleanup : true,
+  },
+  audio_sample: {
+    type: Types.File,
+    dest: 'samples',
+    storage: s3Storage,
   },
   url: { type: Types.Url },
   sortOrder: { type: Types.Number, hidden: true },
