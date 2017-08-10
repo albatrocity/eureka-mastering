@@ -24,6 +24,8 @@ Project.add({
     type: Types.File,
     dest: 'samples',
     storage: s3Storage,
+    label: 'Audio sample',
+    note: 'mp3 only'
   },
   url: { type: Types.Url },
   sortOrder: { type: Types.Number, hidden: true },

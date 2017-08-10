@@ -26,6 +26,8 @@
     "react": "^15.6.1",
     "react-boxen": "^1.1.2",
     "react-dom": "^15.6.1",
+    "react-icons": "^2.2.5",
+    "react-player": "^0.20.0",
     "react-scrollspy": "^3.2.0",
     "react-social-icons": "^2.7.0",
     "react-sticky": "^6.0.1",
