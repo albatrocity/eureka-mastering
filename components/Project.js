@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Box from 'react-boxen'
 import styled from 'styled-components'
-import ReactPlayer from 'react-player'
+
 import { grayShade1, gray, gold, black } from '../config/colors'
 import units from '../config/units'
 import PlayerControls from './PlayerControls'

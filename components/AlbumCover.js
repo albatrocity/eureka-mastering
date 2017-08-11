@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import PlayerControls from './PlayerControls'
+
 
 const Thumbnail = styled.img`
   max-width: 100%;
@@ -16,36 +16,9 @@ const Thumbnail = styled.img`
   }
 `
 
-const StyledAlbumCover = styled.div`
-  position: relative;
-`
 
-const PlayerOverlay = styled.div`
-  opacity: 0;
-  background: rgba(0,0,0,0.5);
-  position: absolute;
-  margin: 4px;
-  transition: all 0.6s;
-
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-
-  &:hover {
-    opacity: 1;
-  }
-`
-
-const AlbumCover = ({ image, audio }) => (
-  <StyledAlbumCover>
-    <Thumbnail src={image.url} />
-    { audio &&
-      <PlayerOverlay>
-        <PlayerControls />
-      </PlayerOverlay>
-    }
-  </StyledAlbumCover>
+const AlbumCover = ({ image }) => (
+  <Thumbnail src={image.url} />
 )
 
 export default AlbumCover

@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import MainLayout from '../components/MainLayout'
+import withRedux from 'next-redux-wrapper'
+import ReactPlayer from 'react-player'
+import { initStore, startClock, addCount, serverRenderClock } from '../store'
 import fetch from 'isomorphic-unfetch'
+
+import MainLayout from '../components/MainLayout'
 import { apiUrl } from '../config/urls'
 import media from '../config/media'
 import { gray, black } from '../config/colors'
@@ -28,8 +32,14 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, clients, services, equipment, projects, contact, config}) => (
+const Index = ({page, clients, services, equipment, projects, contact, config, state}) => (
   <MainLayout contact={contact} config={config}>
+    <ReactPlayer
+      url={state.audio_url}
+      playing={state.audio_playing}
+      controls={false}
+      style={{display: 'none'}}
+      />
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
       <SiteTitle>Eureka Mastering</SiteTitle>
@@ -90,4 +100,8 @@ Index.getInitialProps = async function (context) {
   return page
 }
 
-export default Index
+const mapStateToProps = (state) => ({
+  state: state,
+})
+
+export default withRedux(initStore, mapStateToProps)(Index)
