@@ -9,10 +9,19 @@ module.exports = function(server, keystone) {
 }
 
 const servePage = (req, res) => {
+  switch (req.params.slug) {
+    case 'home':
+      return serveHomePage(req, res)
+      break
+    case 'discography':
+      return serveDiscographyPage(req, res)
+      break
+    default:
+      return res.json({})
+
+  }
   if (req.params.slug === 'home') {
-    return serveHomePage(req, res)
   } else {
-    return servePage(req, res)
   }
 }
 
@@ -45,8 +54,7 @@ const serveHomePage = (req, res) => {
     Page.model.findOne({slug: req.params.slug}),
     Page.model.findOne({slug: 'equipment'}),
     Service.model.find({}).sort('sortOrder'),
-    Client.model.find({}).sort('sortOrder'),
-    Project.model.find({}).sort('sortOrder'),
+    Project.model.find({ featured: true }).sort('sortOrder'),
     Page.model.findOne({slug: 'contact'}),
     Configuration.model.findOne({active: true}),
   ])
@@ -55,10 +63,37 @@ const serveHomePage = (req, res) => {
         page: fillImage(results[0]),
         equipment: sizeImage(results[1]),
         services: results[2],
-        clients: results[3],
-        projects: results[4],
-        contact: results[5],
-        config: results[6],
+        projects: results[3],
+        contact: results[4],
+        config: results[5],
+      })
+    })
+    .catch((err) => {
+      console.log(err); res.json(err)
+    })
+}
+
+const serveDiscographyPage = (req, res) => {
+  const Page = req.keystone.list('Page')
+  const Service = req.keystone.list('Service')
+  const Client = req.keystone.list('Client')
+  const Project = req.keystone.list('Project')
+  const Configuration = req.keystone.list('Configuration')
+
+  return Promise.all([
+    Page.model.findOne({slug: req.params.slug}),
+    Project.model.find({}).sort('sortOrder'),
+    Client.model.find({}).sort('sortOrder'),
+    Page.model.findOne({slug: 'contact'}),
+    Configuration.model.findOne({active: true}),
+  ])
+    .then((results) => {
+      res.json({
+        page: fillImage(results[0]),
+        projects: results[1],
+        clients: results[2],
+        contact: results[3],
+        config: results[4],
       })
     })
     .catch((err) => {

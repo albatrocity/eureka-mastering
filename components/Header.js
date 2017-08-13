@@ -6,12 +6,7 @@ import { gray, blue } from '../config/colors'
 import styled from 'styled-components'
 import media from '../config/media'
 import ConstrainedContainer from './ConstrainedContainer'
-
-const StyledSpy = styled(Scrollspy)`
-  display: flex;
-  padding: 0 ${units[4]} 0 ${units[4]};
-  ${media.phone`padding: 0;`}
-`
+import SpyNav from './SpyNav'
 
 const StyledHeader = styled.div`
   background: ${props => props.color || blue};
@@ -23,15 +18,7 @@ const Header = (props) => {
   return (
     <StyledHeader color={props.color} isSticky={props.isSticky}>
       <ConstrainedContainer>
-        <StyledSpy
-          items={ ['about', 'services', 'equipment', 'discography'] }
-          currentClassName='is-current'
-          componentTag='div'>
-          <NavLink id='about' title='About' />
-          <NavLink id='discography' title='Discography' />
-          <NavLink id='equipment' title='Equipment' />
-          <NavLink id='services' title='Services' />
-        </StyledSpy>
+        <SpyNav inPage={props.route.pathname === '/'} route={props.route}/>
       </ConstrainedContainer>
     </StyledHeader>
   )

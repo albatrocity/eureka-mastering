@@ -20,6 +20,13 @@ const StyledLayout = styled(Box)`
     margin-top: 0;
   }
 
+  p a {
+    color: ${props => props.color || blue};
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   h1, h2, h3, h4 {
     color: ${props => props.color || blue};
     font-weight: 100;
@@ -33,7 +40,7 @@ const MainLayout = (props) => (
         {
           ({style, isSticky}) => (
             <HeaderContainer style={style}>
-              <Header isSticky={isSticky} color={props.config.main_color} />
+              <Header isSticky={isSticky} color={props.config.main_color} route={props.route} />
             </HeaderContainer>
           )
         }

@@ -4,6 +4,7 @@ import Box from 'react-boxen'
 import units from '../config/units'
 import media from '../config/media'
 import { gray, grayTrans } from '../config/colors'
+import Link from 'next/link'
 
 const StyledAnchor = styled.a`
   color: ${p => p.isActive ? gray : grayTrans };
@@ -13,24 +14,33 @@ const StyledAnchor = styled.a`
   ${media.phone`padding-left: 0.3em; padding-right: 0.3em;`}
   text-decoration: none;
   font-weight: 500;
+  cursor: pointer;
+`
+
+const StyledLink = styled(Link)`
+  cursor: pointer;
 `
 
 const NavLink = (props) => {
 
   const BoxWrapper = (p) => (
     <Box padding={units[3]}>
-      <StyledAnchor isActive={p.isActive} href={p.href}>{p.children}</StyledAnchor>
+      { p.inPage ?
+        <StyledAnchor isActive={p.isActive} href={p.href}>{p.children}</StyledAnchor>
+        :
+        <StyledLink href={{ pathname: '/', hash: p.href}}><StyledAnchor isActive={p.isActive}>{p.children}</StyledAnchor></StyledLink>
+      }
     </Box>
   )
 
-  const Link = styled(BoxWrapper)`
+  const SpyLink = styled(BoxWrapper)`
     cursor: pointer;
   `
-
+  const isCurrentPage = props.route.pathname.replace('/','') === props.id
   return (
-    <Link grow isActive={props.className === 'is-current'} href={`#${props.id}`}>
-      { props.title }
-    </Link>
+    <SpyLink grow inPage={props.inPage} isActive={props.className === 'is-current' || isCurrentPage} href={`#${props.id}`}>
+    { props.title }
+    </SpyLink>
   )
 }
 

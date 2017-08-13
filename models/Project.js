@@ -13,6 +13,7 @@ const Project = new keystone.List('Project', {
 Project.add({
   title: { type: Types.Text, required: true, initial: true, index: true },
   artist: { type: Types.Text, initial: true },
+  featured: { type: Types.Boolean, initial: true, default: false },
   description: { type: Types.Html, wysiwyg: true },
   image: {
     type: Types.CloudinaryImage,
@@ -34,5 +35,5 @@ Project.add({
 /**
  * Registration
  */
-Project.defaultColumns = 'title, artist'
+Project.defaultColumns = 'title, artist, featured'
 Project.register()

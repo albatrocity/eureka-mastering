@@ -21,10 +21,10 @@ const ProjectLink = styled.a`
 `
 
 const projectEl = ({image, title, artist}) => (
-  <div>
+  <Box padding='0.4em 0 '>
     <ProjectName>{ title }</ProjectName>
     { artist && <ArtistName>{ artist }</ArtistName> }
-  </div>
+  </Box>
 )
 
 class Project extends Component {

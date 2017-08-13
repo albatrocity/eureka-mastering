@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
 import ReactPlayer from 'react-player'
+import Box from 'react-boxen'
 import { initStore, startClock, addCount, serverRenderClock } from '../store'
 import fetch from 'isomorphic-unfetch'
 
@@ -10,7 +11,6 @@ import { apiUrl } from '../config/urls'
 import media from '../config/media'
 import { gray, black } from '../config/colors'
 
-import Client from '../components/Client'
 import Service from '../components/Service'
 import ImageCarousel from '../components/ImageCarousel'
 import Heading from '../components/Text/Heading'
@@ -34,8 +34,8 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, clients, services, equipment, projects, contact, config, state, audioLoadingSet}) => (
-  <MainLayout contact={contact} config={config}>
+const Index = ({page, services, equipment, projects, contact, config, state, audioLoadingSet, url}) => (
+  <MainLayout contact={contact} config={config} route={url}>
     <ReactPlayer
       url={state.audio_url}
       playing={state.audio_playing}
@@ -59,15 +59,10 @@ const Index = ({page, clients, services, equipment, projects, contact, config, s
         <Heading>Discography</Heading>
       </ConstrainedContainer>
       <ProjectGrid items={projects} config={config} />
-      <ConstrainedContainer>
-        <div>{ clients.map((c, i) => {
-          return (
-            <span key={c._id}>
-              <Client client={c} />
-              { (i < clients.length-1) ? ', ' : '' }
-            </span>
-          )
-        })}</div>
+      <ConstrainedContainer padding={'1em'}>
+        <Box childAlign='flex-end'>
+          <p>see <Link href='/discography'><a>my full discography &rarr;</a></Link></p>
+        </Box>
       </ConstrainedContainer>
     </Section>
     <Section id='equipment'>
