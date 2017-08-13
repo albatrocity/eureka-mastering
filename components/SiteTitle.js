@@ -17,11 +17,11 @@ const Container = styled.div`
 `
 
 const BrandingText = styled.h1`
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oswald', sans-serif;
   color: ${blue};
   margin-bottom: ${units[2]};
   text-transform: uppercase;
-  line-height: 0.8em;
+  line-height: 0.9em;
   font-size: 12em;
   ${media.title1`font-size: 12em;`}
   ${media.title2`font-size: 10em;`}

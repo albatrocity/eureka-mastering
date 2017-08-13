@@ -4,11 +4,13 @@ import NavLink from './NavLink'
 import units from '../config/units'
 import { gray, blue } from '../config/colors'
 import styled from 'styled-components'
+import media from '../config/media'
 import ConstrainedContainer from './ConstrainedContainer'
 
 const StyledSpy = styled(Scrollspy)`
   display: flex;
   padding: 0 ${units[4]} 0 ${units[4]};
+  ${media.phone`padding: 0;`}
 `
 
 const StyledHeader = styled.div`
@@ -26,9 +28,9 @@ const Header = (props) => {
           currentClassName='is-current'
           componentTag='div'>
           <NavLink id='about' title='About' />
-          <NavLink id='services' title='Services' />
-          <NavLink id='equipment' title='Equipment' />
           <NavLink id='discography' title='Discography' />
+          <NavLink id='equipment' title='Equipment' />
+          <NavLink id='services' title='Services' />
         </StyledSpy>
       </ConstrainedContainer>
     </StyledHeader>

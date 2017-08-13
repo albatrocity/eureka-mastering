@@ -47,39 +47,15 @@ const Index = ({page, clients, services, equipment, projects, contact, config, s
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
       <SiteTitle>Eureka Mastering</SiteTitle>
-      <ConstrainedContainer>
+      <ConstrainedContainer padding={'1em'}>
         <About>
           <Social color={config.main_color} />
           <div dangerouslySetInnerHTML={{__html: page.content}} />
         </About>
       </ConstrainedContainer>
     </div>
-    <Section id='services'>
-      <ConstrainedContainer>
-        <Heading>Services</Heading>
-        { services.map(c => <Service key={c._id} service={c} />)}
-      </ConstrainedContainer>
-    </Section>
-    <Section id='equipment'>
-      <ConstrainedContainer>
-        <Heading>Equipment</Heading>
-      </ConstrainedContainer>
-      { equipment.images.length > 0 &&
-        <div style={{margin: '2em 0', backgroundColor: black}} >
-          <ImageCarousel
-            images={equipment.images}
-            height={800}
-            fadeDuration={1.8}
-            delay={4000}
-            />
-        </div>
-      }
-      <ConstrainedContainer>
-        <div dangerouslySetInnerHTML={{__html: equipment.content}} />
-      </ConstrainedContainer>
-    </Section>
     <Section id='discography'>
-      <ConstrainedContainer>
+      <ConstrainedContainer padding={'1em'}>
         <Heading>Discography</Heading>
       </ConstrainedContainer>
       <ProjectGrid items={projects} config={config} />
@@ -92,6 +68,30 @@ const Index = ({page, clients, services, equipment, projects, contact, config, s
             </span>
           )
         })}</div>
+      </ConstrainedContainer>
+    </Section>
+    <Section id='equipment'>
+      <ConstrainedContainer padding={'1em'}>
+        <Heading>Equipment</Heading>
+      </ConstrainedContainer>
+      { equipment.images.length > 0 &&
+        <div style={{margin: '2em 0', backgroundColor: black}} >
+          <ImageCarousel
+            images={equipment.images}
+            height={800}
+            fadeDuration={1.8}
+            delay={4000}
+            />
+        </div>
+      }
+      <ConstrainedContainer padding={'1em'}>
+        <div dangerouslySetInnerHTML={{__html: equipment.content}} />
+      </ConstrainedContainer>
+    </Section>
+    <Section id='services'>
+      <ConstrainedContainer padding={'1em'}>
+        <Heading>Services</Heading>
+        { services.map(c => <Service key={c._id} service={c} />)}
       </ConstrainedContainer>
     </Section>
   </MainLayout>

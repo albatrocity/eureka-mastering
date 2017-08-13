@@ -17,7 +17,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <link href="https://fonts.googleapis.com/css?family=Palanquin:100|Montserrat:900" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css?family=Palanquin:100,500|Oswald:700" rel="stylesheet"/>
           {styleTags}
         </Head>
         <body className="body" style={{margin: 0, padding: 0}}>
