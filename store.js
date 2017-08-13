@@ -1,20 +1,22 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 
-const exampleInitialState = {
+const initialState = {
   audio_playing: false,
   audio_url: null,
   audio_current_position: 0,
+  audio_loading: false,
 }
 
 export const actionTypes = {
   AUDIO_PLAY: 'AUDIO_PLAY',
   AUDIO_PAUSE: 'AUDIO_PAUSE',
   AUDIO_SET_TIME: 'AUDIO_SET_TIME',
+  AUDIO_LOADING_SET: 'AUDIO_LOADING_SET',
 }
 
 // REDUCERS
-export const reducer = (state = exampleInitialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUDIO_PLAY:
       return Object.assign({}, state, {
@@ -28,6 +30,10 @@ export const reducer = (state = exampleInitialState, action) => {
     case actionTypes.AUDIO_SET_TIME:
       return Object.assign({}, state, {
         audio_current_position: action.payload.played,
+      })
+    case actionTypes.AUDIO_LOADING_SET:
+      return Object.assign({}, state, {
+        audio_loading: action.payload
       })
     default: return state
   }
@@ -43,7 +49,10 @@ export const pauseAudio = () => dispatch => {
 export const advanceAudio = () => dispatch => {
   return dispatch({ type: actionTypes.AUDIO_SET_TIME })
 }
+export const setAudioLoading = () => dispatch => {
+  return dispatch({ type: actionTypes.AUDIO_LOADING_SET })
+}
 
-export const initStore = (initialState = exampleInitialState) => {
+export const initStore = (initialState = initialState) => {
   return createStore(reducer, initialState, applyMiddleware(thunkMiddleware))
 }

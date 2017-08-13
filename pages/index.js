@@ -19,6 +19,8 @@ import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
 import Social from '../components/Social'
 
+import setAudioLoading from '../store'
+
 const About = styled.div`
   margin-top: 6em;
   ${media.tablet`margin-top: 0`}
@@ -32,11 +34,13 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, clients, services, equipment, projects, contact, config, state}) => (
+const Index = ({page, clients, services, equipment, projects, contact, config, state, audioLoadingSet}) => (
   <MainLayout contact={contact} config={config}>
     <ReactPlayer
       url={state.audio_url}
       playing={state.audio_playing}
+      onBuffer={() => setAudioLoading(true)}
+      onPlay={() => setAudioLoading(false)}
       controls={false}
       style={{display: 'none'}}
       />
@@ -78,7 +82,7 @@ const Index = ({page, clients, services, equipment, projects, contact, config, s
       <ConstrainedContainer>
         <Heading>Discography</Heading>
       </ConstrainedContainer>
-      <ProjectGrid items={projects} />
+      <ProjectGrid items={projects} config={config} />
       <ConstrainedContainer>
         <div>{ clients.map((c, i) => {
           return (
@@ -104,4 +108,4 @@ const mapStateToProps = (state) => ({
   state: state,
 })
 
-export default withRedux(initStore, mapStateToProps)(Index)
+export default withRedux(initStore, mapStateToProps, { setAudioLoading })(Index)

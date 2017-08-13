@@ -14,9 +14,9 @@ const boxOptions = {
   childWrap: 'wrap',
 }
 
-const ProjectGrid = ({ items, itemComponent }) => (
+const ProjectGrid = ({ items, itemComponent, config }) => (
   <Box {...boxOptions}>
-    { items.map((item) => <Project key={item._id} project={item}/>) }
+    { items.map((item) => <Project config={config} key={item._id} project={item}/>) }
   </Box>
 )
 

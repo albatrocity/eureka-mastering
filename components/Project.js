@@ -29,10 +29,10 @@ const projectEl = ({image, title, artist}) => (
 
 class Project extends Component {
   render() {
-    const { project } = this.props
+    const { project, config } = this.props
     return (
       <Box>
-        <ProjectPlayer image={project.image} audio={project.audio_sample} id={project._id} />
+        <ProjectPlayer config={config} image={project.image} audio={project.audio_sample} id={project._id} />
         { project.url ?
           <ProjectLink href={project.url}>{projectEl(project)}</ProjectLink>
           :

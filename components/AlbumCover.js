@@ -1,24 +1,30 @@
 import styled from 'styled-components'
+import Box from 'react-boxen'
 
 
-const Thumbnail = styled.img`
-  max-width: 100%;
-  max-height: 100%;
+const Thumbnail = styled(Box)`
   border-width: 4px;
   border-style: solid;
   transition: all 0.4s;
   border-color: transparent;
   border-radius: 2px;
   box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
-  &:hover {
-    border-color: transparent;
-    box-shadow: 0 0 1px 1px rgba(0,0,0,0);
-  }
+  background: url(${props => props.url});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  ${props => props.active ? `
+    transform: translate(0, -20px);
+    box-shadow: 0 0 16px rgba(0,0,0,0.4);
+  ` : ''}
 `
 
 
-const AlbumCover = ({ image }) => (
-  <Thumbnail src={image.url} />
+const AlbumCover = ({ image, active }) => (
+  <Thumbnail childBasis={'220px'} grow url={image.url} active={active}>
+    &nbsp;
+  </Thumbnail>
 )
 
 export default AlbumCover

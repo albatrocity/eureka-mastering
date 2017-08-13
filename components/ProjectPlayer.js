@@ -14,12 +14,13 @@ import PlayerControls from './PlayerControls'
 
 const StyledAlbumCover = styled.div`
   position: relative;
+  transition: all 1s;
+
 `
 const PlayerOverlay = styled.div`
   opacity: 0;
-  background: rgba(0,0,0,0.5);
   position: absolute;
-  margin: 4px;
+  margin: 35% 4px 0 4px;
   transition: all 0.6s;
 
   width: 100%;
@@ -27,24 +28,30 @@ const PlayerOverlay = styled.div`
   top: 0;
   left: 0;
 
+  ${props => props.isActive ? `
+    transform: translate(0, -20px);
+    opacity: 1;
+  ` : ''}
+
   &:hover {
     opacity: 1;
   }
 `
 
-const ProjectPlayer = ({image, audio, id, state, playAudio, pauseAudio, updateProgress}) => (
+const ProjectPlayer = ({image, audio, id, state, playAudio, pauseAudio, updateProgress, config}) => (
   <div>
     <StyledAlbumCover>
-      <AlbumCover image={image} />
+      <AlbumCover image={image} active={audio && audio.url === state.audio_url} />
       { audio &&
-        <PlayerOverlay>
+        <PlayerOverlay isActive={state.audio_url === audio.url}>
           <PlayerControls
             audio={audio}
             id={id}
             state={state}
             onPlay={playAudio}
             onPause={pauseAudio}
-            onProgress={updateProgress} />
+            onProgress={updateProgress}
+            color={config.main_color} grow/>
         </PlayerOverlay>
       }
     </StyledAlbumCover>
