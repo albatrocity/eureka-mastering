@@ -12,7 +12,7 @@ const StyledAnchor = styled.a`
   padding: 0.5em 1em;
   ${media.phone`padding-left: 0.3em; padding-right: 0.3em;`}
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
 `
 
 const NavLink = (props) => {

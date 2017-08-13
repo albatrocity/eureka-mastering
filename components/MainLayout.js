@@ -22,6 +22,7 @@ const StyledLayout = styled(Box)`
 
   h1, h2, h3, h4 {
     color: ${props => props.color || blue};
+    font-weight: 100;
   }
 `
 
