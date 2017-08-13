@@ -5,7 +5,6 @@ module.exports = function(server, keystone) {
     next()
   })
   server.get('/api/pages/:slug', servePage)
-  server.get('/api/equipment', serveEquipment)
 }
 
 const servePage = (req, res) => {
@@ -99,11 +98,4 @@ const serveDiscographyPage = (req, res) => {
     .catch((err) => {
       console.log(err); res.json(err)
     })
-}
-
-const serveEquipment = (req, res) => {
-  const Page = req.keystone.list('Equipment')
-  return Page.model.find({}).then((equipment) => {
-    res.json(equipment)
-  })
 }

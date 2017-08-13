@@ -26,13 +26,14 @@ const PlayerControls = ({audio, onPlay, onPause, state, id, color}) => {
           <Pause
             size={60}
             color={color}
+            style={{cursor: 'pointer'}}
             onClick={() => onPause() }
           />
           :
           <Play
             size={60}
             color={color}
-            style={{left: '4px', position: 'relative'}}
+            style={{left: '4px', position: 'relative', cursor: 'pointer'}}
             onClick={() => onPlay(audio.url) }
           />
         }
