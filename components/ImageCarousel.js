@@ -34,7 +34,7 @@ const ImageCarousel = (props) => {
   return (
     <FadeThrough {...config}>
       { images.map((img) => (
-        <StyledContainer abstract={abstract} key={img._id} style={{backgroundImage: `url(${img.url})`, opacity: opacity || 1}}>
+        <StyledContainer abstract={abstract} key={img._id} style={{backgroundImage: `url(${img.url})`}}>
           { children }
         </StyledContainer>
       )
