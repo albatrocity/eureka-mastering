@@ -12,6 +12,7 @@ Configuration.add({
   main_color: { type: Types.Color, required: true, default: '#105469', note: 'Main color of header background and heading text'},
   footer_color: { type: Types.Color, required: true, default: '#1a1a1a', note: 'Background color of the footer'},
   active: { type: Types.Boolean },
+  meta_description: { type: Types.Text },
 })
 
 /**

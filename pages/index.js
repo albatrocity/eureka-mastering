@@ -18,6 +18,7 @@ import ConstrainedContainer from '../components/ConstrainedContainer'
 import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
 import Social from '../components/Social'
+import Head from 'next/head'
 
 import setAudioLoading from '../store'
 
@@ -36,6 +37,10 @@ const Section = styled.div`
 
 const Index = ({page, services, equipment, projects, contact, config, state, audioLoadingSet, url}) => (
   <MainLayout contact={contact} config={config} route={url}>
+    <Head>
+      <title>Eureka Mastering</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
     <ReactPlayer
       url={state.audio_url}
       playing={state.audio_playing}
@@ -61,7 +66,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
       <ProjectGrid items={projects} config={config} />
       <ConstrainedContainer padding={'1em'}>
         <Box childAlign='flex-end'>
-          <p>see <Link href='/discography'><a>my full discography &rarr;</a></Link></p>
+          <p>see <Link prefetch href='/discography'><a>my full discography &rarr;</a></Link></p>
         </Box>
       </ConstrainedContainer>
     </Section>

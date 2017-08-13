@@ -18,6 +18,7 @@ import ConstrainedContainer from '../components/ConstrainedContainer'
 import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
 import Social from '../components/Social'
+import Head from 'next/head'
 
 import setAudioLoading from '../store'
 
@@ -30,6 +31,11 @@ const Section = styled.div`
 
 const Discography = ({page, clients, projects, contact, config, state, audioLoadingSet, url}) => (
   <MainLayout contact={contact} config={config} route={url}>
+    <Head>
+      <title>Eureka Mastering | Discography</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      <meta name="description" content={config.meta_description} />
+    </Head>
     <ReactPlayer
       url={state.audio_url}
       playing={state.audio_playing}
