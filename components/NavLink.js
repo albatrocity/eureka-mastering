@@ -10,8 +10,9 @@ const StyledAnchor = styled.a`
   color: ${p => p.isActive ? gray : grayTrans };
   background: ${p => p.isActive ? `rgba(0, 0, 0, 0.3)` : 'transparent'};
   transition: 0.4s all;
-  padding: 0.5em 1em;
-  ${media.phone`padding-left: 0.3em; padding-right: 0.3em;`}
+  padding: 0.5em 0.8em;
+  ${media.phone`padding: 0.7em 0.5em; font-size: 0.8em`}
+  ${media.sixplus`padding: 0.7em 0.5em; font-size: 0.8em`}
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
@@ -24,7 +25,7 @@ const StyledLink = styled(Link)`
 const NavLink = (props) => {
 
   const BoxWrapper = (p) => (
-    <Box padding={units[3]}>
+    <Box shrink padding={units[3]} childSpacing={0} childAlign='center'>
       { p.inPage ?
         <StyledAnchor isActive={p.isActive} href={p.href}>{p.children}</StyledAnchor>
         :
@@ -38,8 +39,8 @@ const NavLink = (props) => {
   `
   const isCurrentPage = props.route.pathname.replace('/','') === props.id
   return (
-    <SpyLink grow inPage={props.inPage} isActive={props.className === 'is-current' || isCurrentPage} href={`#${props.id}`}>
-    { props.title }
+    <SpyLink inPage={props.inPage} isActive={props.className === 'is-current' || isCurrentPage} href={`#${props.id}`}>
+      { props.title }
     </SpyLink>
   )
 }

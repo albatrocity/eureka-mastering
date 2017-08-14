@@ -1,7 +1,4 @@
 import Box from 'react-boxen'
-import Scrollspy from 'react-scrollspy'
-import NavLink from './NavLink'
-import units from '../config/units'
 import styled from 'styled-components'
 
 const StyledContainer = styled(Box)`
@@ -12,7 +9,7 @@ const StyledContainer = styled(Box)`
 `
 
 const ConstrainedContainer = (props) => (
-  <StyledContainer>
+  <StyledContainer {...props}>
     { props.children }
   </StyledContainer>
 )

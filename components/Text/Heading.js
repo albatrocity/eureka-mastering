@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import { blue } from '../../config/colors'
+import media from '../../config/media'
 import units from '../../config/units'
 
 const H1 = styled.h1`
   font-family: 'Montserrat', sans-serif;
   font-size: 3em;
+  ${media.phone`font-size: 2.5em;`}
   margin-bottom: ${units[2]};
 `
 const H2 = styled.h1`

@@ -18,7 +18,6 @@ import ConstrainedContainer from '../components/ConstrainedContainer'
 import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
 import Social from '../components/Social'
-import Head from 'next/head'
 
 import setAudioLoading from '../store'
 
@@ -36,11 +35,7 @@ const Section = styled.div`
 `
 
 const Index = ({page, services, equipment, projects, contact, config, state, audioLoadingSet, url}) => (
-  <MainLayout contact={contact} config={config} route={url}>
-    <Head>
-      <title>Eureka Mastering</title>
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
+  <MainLayout contact={contact} config={config} route={url} page={page}>
     <ReactPlayer
       url={state.audio_url}
       playing={state.audio_playing}
@@ -78,7 +73,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
         <div style={{margin: '2em 0', backgroundColor: black}} >
           <ImageCarousel
             images={equipment.images}
-            height={800}
+            height={'100vw'}
             fadeDuration={1.8}
             delay={4000}
             />

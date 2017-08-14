@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import FadeThrough from './FadeThrough/FadeThroughContainer'
 import PropTypes from 'prop-types'
+import media from '../config/media'
 import { black } from '../config/colors'
 
 const ImageCarousel = (props) => {
@@ -9,7 +10,7 @@ const ImageCarousel = (props) => {
 
   const config = {
     delay: delay || 5000,
-    height: `${height || 400}px`,
+    height: `${height || '400px'}`,
     width: '100%',
     fadeDuration: fadeDuration
   }
@@ -17,7 +18,7 @@ const ImageCarousel = (props) => {
   const StyledContainer = styled.div`
     overflow: hidden;
     display: block;
-    height: ${height || 400}px;
+    height: ${height || '400px'};
     width: 100%;
     background-color: ${black};
     background-repeat: no-repeat;
@@ -25,6 +26,9 @@ const ImageCarousel = (props) => {
       background-position: 50% 100%;
       background-size: cover;
       background-attachment: fixed;
+      @media (max-width: ${768 / 16}em) {
+        background-attachment: scroll
+      }
     ` : `
       background-size: scale;
       background-size: contain;

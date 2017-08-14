@@ -1,11 +1,8 @@
-import Box from 'react-boxen'
 import Scrollspy from 'react-scrollspy'
 import units from '../config/units'
-import { gray, blue } from '../config/colors'
 import styled from 'styled-components'
 import media from '../config/media'
 import NavLink from './NavLink'
-import ConstrainedContainer from './ConstrainedContainer'
 
 const StyledSpy = styled(Scrollspy)`
   display: flex;

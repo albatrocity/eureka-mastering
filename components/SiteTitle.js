@@ -30,21 +30,22 @@ const BrandingText = styled.h1`
     :
     `
       line-height: 0.9em;
-      font-size: 12em;
-      ${media.title1`font-size: 12em;`}
-      ${media.title2`font-size: 10em;`}
-      ${media.title3`font-size: 8em;`}
-      ${media.title4`font-size: 6em;`}
-      ${media.tablet`font-size: 3.5em;`}
-      ${media.phone`font-size: 3em; line-height: 1em`}
     `
-  }
+}
+  font-size: 12em;
+  ${media.title1`font-size: 12em`}
+  ${media.title2`font-size: 10em`}
+  ${media.title3`font-size: 8em;`}
+  ${media.title4`font-size: 6em;`}
+  ${media.tablet`font-size: 3.5em;`}
+  ${media.phone`font-size: 3em; line-height: 1em`}
 `
 
-const SiteTitle = ({ level, children, config }) => (
-  <Container config={config}>
-    <BrandingText config={config}>Eureka Mastering</BrandingText>
-  </Container>
-)
+const SiteTitle = ({ level, children, config }) => {
+  return (
+    <Container config={config}>
+      <BrandingText config={config}>Eureka Mastering</BrandingText>
+    </Container>
+  )}
 
 export default SiteTitle
