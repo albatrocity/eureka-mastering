@@ -3,12 +3,12 @@ import { blue } from '../../config/colors'
 import units from '../../config/units'
 
 const H1 = styled.h1`
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 3em;
   margin-bottom: ${units[2]};
 `
 const H2 = styled.h1`
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 2.25em;
 `
 const H3 = styled.h1`
