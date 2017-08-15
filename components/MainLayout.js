@@ -14,6 +14,7 @@ const HeaderContainer = styled.div`
 
 const StyledLayout = styled(Box)`
   font-family: 'Palanquin', sans-serif;
+  font-weight: 100;
 
   h3, h2 {
     margin-bottom: 0;
