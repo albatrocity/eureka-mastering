@@ -43,7 +43,7 @@ const BrandingText = styled.h1`
 const SiteTitle = ({ level, children, config }) => {
   return (
     <Container config={config}>
-      <BrandingText config={config}>Eureka Mastering</BrandingText>
+      <BrandingText config={config}>eureka mastering</BrandingText>
     </Container>
   )}
 

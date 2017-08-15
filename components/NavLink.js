@@ -14,7 +14,7 @@ const StyledAnchor = styled.a`
   ${media.phone`padding: 0.7em 0.5em; font-size: 0.8em`}
   ${media.sixplus`padding: 0.7em 0.5em; font-size: 0.8em`}
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 100;
   cursor: pointer;
 `
 
