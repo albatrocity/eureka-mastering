@@ -30,7 +30,7 @@ app.prepare()
     keystone.init({
       'name': 'Eureka Mastering',
       'brand': 'Eureka Mastering',
-      'session store': 'mongo',
+      'session store': 'connect-mongo',
       'updates': 'updates',
       'auth': true,
       'user model': 'User',

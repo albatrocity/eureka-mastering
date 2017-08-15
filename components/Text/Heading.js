@@ -4,18 +4,21 @@ import units from '../../config/units'
 
 const H1 = styled.h1`
   font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   font-size: 3em;
   ${media.phone`font-size: 2.5em;`}
   margin-bottom: ${units[2]};
 `
-const H2 = styled.h1`
+const H2 = styled.h2`
   font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
   font-size: 2.25em;
 `
-const H3 = styled.h1`
+const H3 = styled.h3`
+  font-weight: 900;
   font-size: 1.75em;
 `
-const H4 = styled.h1`
+const H4 = styled.h4`
   font-size: 1.125em;
 `
 

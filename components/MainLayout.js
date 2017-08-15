@@ -14,13 +14,13 @@ const HeaderContainer = styled.div`
 
 const StyledLayout = styled(Box)`
   font-family: 'Palanquin', sans-serif;
-  font-weight: 100;
 
   h3, h2 {
     margin-bottom: 0;
   }
 
   p {
+    font-weight: 100;
     margin-top: 0;
   }
 
@@ -33,7 +33,7 @@ const StyledLayout = styled(Box)`
 
   h1, h2, h3, h4 {
     color: ${props => props.color || blue};
-    font-weight: 100;
+    font-weight: 900;
   }
 `
 
