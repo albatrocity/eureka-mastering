@@ -41,7 +41,6 @@ const Discography = ({page, clients, projects, contact, config, state, audioLoad
       />
     <div>
       <ConstrainedContainer padding={'1em'}>
-        <SiteTitle config='normal'>Eureka Mastering</SiteTitle>
         <Social color={config.main_color} />
         <div dangerouslySetInnerHTML={{__html: page.content}} />
       </ConstrainedContainer>

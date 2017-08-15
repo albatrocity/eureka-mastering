@@ -54,7 +54,11 @@ const MainLayout = (props) => (
         {
           ({style, isSticky}) => (
             <HeaderContainer style={style}>
-              <Header isSticky={isSticky} color={props.config.main_color} route={props.route} />
+              <Header
+                isSticky={isSticky}
+                mainColor={props.config.main_color}
+                textColor={props.config.header_text_color} 
+                route={props.route} />
             </HeaderContainer>
           )
         }

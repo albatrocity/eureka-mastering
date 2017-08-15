@@ -46,7 +46,6 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
       />
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
-      <SiteTitle>Eureka Mastering</SiteTitle>
       <ConstrainedContainer padding={'1em'}>
         <About>
           <Social color={config.main_color} />
@@ -74,7 +73,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
           <ImageCarousel
             images={equipment.images}
             height={'90vw'}
-            fadeDuration={1.8}
+            fadeDuration={1}
             delay={4000}
             />
         </div>

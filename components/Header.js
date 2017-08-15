@@ -1,12 +1,10 @@
-import Box from 'react-boxen'
-import Scrollspy from 'react-scrollspy'
-import NavLink from './NavLink'
-import units from '../config/units'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { gray, blue } from '../config/colors'
 import styled from 'styled-components'
-import media from '../config/media'
 import ConstrainedContainer from './ConstrainedContainer'
-import SpyNav from './SpyNav'
+import SiteTitle from './SiteTitle'
+import Nav from './Nav'
 
 const StyledHeader = styled.div`
   background: ${props => props.color || blue};
@@ -16,12 +14,20 @@ const StyledHeader = styled.div`
 
 const Header = (props) => {
   return (
-    <StyledHeader color={props.color} isSticky={props.isSticky}>
-      <ConstrainedContainer>
-        <SpyNav inPage={props.route.pathname === '/'} route={props.route}/>
+    <StyledHeader color={props.mainColor} isSticky={props.isSticky}>
+      <ConstrainedContainer childDirection='row' childAlign='center' childJustify='space-around'>
+        <SiteTitle color={props.textColor} />
+        <Nav shrink inPage={props.route.pathname === '/'} route={props.route}/>
       </ConstrainedContainer>
     </StyledHeader>
   )
+}
+
+Header.propTypes = {
+  textColor: PropTypes.string,
+  mainColor: PropTypes.string,
+  route: PropTypes.object,
+  isSticky: PropTypes.bool,
 }
 
 export default Header
