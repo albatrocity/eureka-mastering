@@ -25,7 +25,7 @@ const BrandingText = styled.h1`
   text-transform: uppercase;
   ${p => p.config === 'normal' ?
     `
-      font-size: 3em;
+      font-size: 3em !important;
     `
     :
     `
