@@ -22,7 +22,6 @@ const BrandingText = styled.h1`
   font-family: 'Oswald', sans-serif;
   color: ${blue};
   margin-bottom: ${units[2]};
-  text-transform: uppercase;
   ${p => p.config === 'normal' ?
     `
       font-size: 3.5em !important;
