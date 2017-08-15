@@ -19,7 +19,7 @@ const Container = styled.div`
 `
 
 const BrandingText = styled.h1`
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 500 !important;
   color: ${blue};
   margin-bottom: ${units[2]};

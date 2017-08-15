@@ -24,6 +24,11 @@ const StyledLayout = styled(Box)`
     margin-top: 0;
   }
 
+  ul, ol, blockquote, a {
+    font-weight: 100;
+
+  }
+
   p a {
     color: ${props => props.color || blue};
     &:hover {

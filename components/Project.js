@@ -6,14 +6,18 @@ import { grayShade1, gray, gold, black } from '../config/colors'
 import units from '../config/units'
 import PlayerControls from './PlayerControls'
 import ProjectPlayer from './ProjectPlayer'
+import Heading from './Text/Heading'
 
-const ProjectName = styled.h3`
+const ProjectName = styled.h4`
   margin: 0;
   line-height: 1.2em;
+  font-weight: 500;
+  font-size: 1.4em;
+  margin-top: 0;
 `
 const ArtistName = styled.span`
   color: ${grayShade1};
-  font-weight: normal
+  font-weight: 100;
 `
 const ProjectLink = styled.a`
   text-decoration: none;
@@ -22,7 +26,7 @@ const ProjectLink = styled.a`
 
 const projectEl = ({image, title, artist}) => (
   <Box padding='0.4em 0 '>
-    <ProjectName>{ title }</ProjectName>
+    <ProjectName level={3}>{ title }</ProjectName>
     { artist && <ArtistName>{ artist }</ArtistName> }
   </Box>
 )

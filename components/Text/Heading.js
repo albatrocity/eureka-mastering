@@ -15,11 +15,11 @@ const H2 = styled.h2`
   font-size: 2.25em;
 `
 const H3 = styled.h3`
-  font-weight: 900;
-  font-size: 1.75em;
+  font-weight: 100;
+  font-size: 1.4em;
 `
 const H4 = styled.h4`
-  font-size: 1.125em;
+  font-size: 1.5em;
 `
 
 const Heading = ({ level, children }) => {
