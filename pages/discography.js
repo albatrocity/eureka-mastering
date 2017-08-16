@@ -47,7 +47,7 @@ const Discography = ({page, clients, projects, contact, config, state, audioLoad
     </div>
     <Section>
       <ConstrainedContainer padding={'1em'}>
-        <Heading>Discography</Heading>
+        <Heading>{ page.name }</Heading>
       </ConstrainedContainer>
       <ProjectGrid items={projects} config={config} />
       <ConstrainedContainer>

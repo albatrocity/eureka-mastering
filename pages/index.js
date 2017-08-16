@@ -21,12 +21,6 @@ import Social from '../components/Social'
 
 import setAudioLoading from '../store'
 
-const About = styled.div`
-  margin-top: 6em;
-  ${media.tablet`margin-top: 0`}
-  ${media.phone`margin-top: 0`}
-`
-
 const Section = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
@@ -47,10 +41,8 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
       <ConstrainedContainer padding={'1em'}>
-        <About>
-          <Social color={config.main_color} />
-          <div dangerouslySetInnerHTML={{__html: page.content}} />
-        </About>
+        <Social color={config.main_color} />
+        <div dangerouslySetInnerHTML={{__html: page.content}} />
       </ConstrainedContainer>
     </div>
     <Section id='discography'>
