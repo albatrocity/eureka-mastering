@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Header from './Header'
 import Box from 'react-boxen'
 import styled from 'styled-components'
@@ -7,6 +8,9 @@ import { StickyContainer, Sticky } from 'react-sticky'
 import Footer from './Footer'
 import { blue } from '../config/colors'
 import Head from 'next/head'
+import Menu from './Menu'
+import Nav from './Nav'
+import {action as toggleMenu} from 'redux-burger-menu'
 
 const HeaderContainer = styled.div`
   z-index: 10
@@ -49,7 +53,7 @@ const MainLayout = (props) => (
       <meta name="description" content={props.config.meta_description} />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <StickyContainer>
+    <StickyContainer id="outer-container">
       <Sticky>
         {
           ({style, isSticky}) => (
@@ -57,13 +61,20 @@ const MainLayout = (props) => (
               <Header
                 isSticky={isSticky}
                 mainColor={props.config.main_color}
-                textColor={props.config.header_text_color} 
-                route={props.route} />
+                textColor={props.config.header_text_color}
+                route={props.route}
+                toggleMenu={props.toggleMenu}
+                isMenuOpen={props.menu.isOpen}
+              />
             </HeaderContainer>
           )
         }
       </Sticky>
-      {props.children}
+      <Menu config={props.config} right pageWrapId={ 'page-wrap' } outerContainerId={ 'outer-container' }>
+        <Nav onNavigate={() => props.toggleMenu(false)} layout='vertical' inPage={props.route.pathname === '/'} route={props.route}/>
+      </Menu>
+      <div id="page-wrap">{props.children}</div>
+
       <Footer color={props.config.footer_color} contact={props.contact} />
     </StickyContainer>
   </StyledLayout>
@@ -77,4 +88,8 @@ MainLayout.propTypes = {
   children: PropTypes.array,
 }
 
-export default MainLayout
+const mapStateToProps = (state) => ({
+  menu: state.burgerMenu,
+})
+
+export default connect(mapStateToProps, { toggleMenu })(MainLayout)

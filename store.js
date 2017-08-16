@@ -1,4 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import {reducer as burgerMenu} from 'redux-burger-menu'
 import thunkMiddleware from 'redux-thunk'
 
 const initialState = {
@@ -16,7 +17,7 @@ export const actionTypes = {
 }
 
 // REDUCERS
-export const reducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.AUDIO_PLAY:
       return Object.assign({}, state, {
@@ -52,6 +53,10 @@ export const advanceAudio = () => dispatch => {
 export const setAudioLoading = () => dispatch => {
   return dispatch({ type: actionTypes.AUDIO_LOADING_SET })
 }
+
+const reducer = combineReducers({
+  app: appReducer, burgerMenu
+})
 
 export const initStore = (initialState = initialState) => {
   return createStore(reducer, initialState, applyMiddleware(thunkMiddleware))

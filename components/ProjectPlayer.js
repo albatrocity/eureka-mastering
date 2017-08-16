@@ -62,7 +62,7 @@ ProjectPlayer.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  state: state,
+  state: state.app,
 })
 
 const mapDispatchToProps = (dispatch) => {

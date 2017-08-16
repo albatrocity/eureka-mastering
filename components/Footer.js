@@ -1,5 +1,4 @@
 import Box from 'react-boxen'
-import Scrollspy from 'react-scrollspy'
 import NavLink from './NavLink'
 import units from '../config/units'
 import { gray, blue, gold, black } from '../config/colors'

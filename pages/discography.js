@@ -72,7 +72,7 @@ Discography.getInitialProps = async function (context) {
 }
 
 const mapStateToProps = (state) => ({
-  state: state,
+  state: state.app,
 })
 
 export default withRedux(initStore, mapStateToProps, { setAudioLoading })(Discography)
