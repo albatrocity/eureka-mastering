@@ -3,10 +3,7 @@ import Box from 'react-boxen'
 import styled from 'styled-components'
 
 import { grayShade1, gray, gold, black } from '../config/colors'
-import units from '../config/units'
-import PlayerControls from './PlayerControls'
 import ProjectPlayer from './ProjectPlayer'
-import Heading from './Text/Heading'
 
 const ProjectName = styled.h4`
   margin: 0;
@@ -14,6 +11,7 @@ const ProjectName = styled.h4`
   font-weight: 500;
   font-size: 1.4em;
   margin-top: 0;
+  color: ${black};
 `
 const ArtistName = styled.span`
   color: ${grayShade1};

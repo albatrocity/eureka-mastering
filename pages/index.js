@@ -39,7 +39,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
       style={{display: 'none'}}
       />
     <div id='about'>
-      <ImageCarousel images={page.images} opacity='0.6' abstract={true}/>
+      <ImageCarousel images={page.images} opacity='0.6' height={'270px'} abstract={true}/>
       <ConstrainedContainer padding={'1em'}>
         <Social color={config.main_color} />
         <div dangerouslySetInnerHTML={{__html: page.content}} />
