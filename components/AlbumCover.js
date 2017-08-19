@@ -30,7 +30,7 @@ const AlbumCover = ({ image, active }) => (
 )
 
 AlbumCover.propTypes = {
-  image: PropTypes.string,
+  image: PropTypes.object,
   active: PropTypes.bool,
 }
 

@@ -14,8 +14,13 @@ Configuration.add({
   footer_color: { type: Types.Color, required: true, default: '#1a1a1a', note: 'Background color of the footer'},
   active: { type: Types.Boolean },
   meta_description: { type: Types.Textarea, label: 'Meta Tag Description' },
+  cache_key: { type: Types.Number, default: Date.now() },
 })
 
+Configuration.schema.pre('save', function(next) {
+  this.cache_key = Date.now()
+  next()
+})
 /**
  * Registration
  */

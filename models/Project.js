@@ -1,6 +1,7 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
 const s3Storage = require('../config/s3Storage')
+const cacheBuster = require('./cacheBuster')
 
 /**
  * Client Model
@@ -31,6 +32,7 @@ Project.add({
   url: { type: Types.Url },
   sortOrder: { type: Types.Number, hidden: true },
 })
+cacheBuster(Project)
 
 /**
  * Registration

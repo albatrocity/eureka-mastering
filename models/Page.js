@@ -1,5 +1,6 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
+const cacheBuster = require('./cacheBuster')
 
 /**
  * Page Model
@@ -24,6 +25,8 @@ Page.add({
     autoCleanup : true,
   }
 })
+
+cacheBuster(Page)
 
 /**
  * Registration

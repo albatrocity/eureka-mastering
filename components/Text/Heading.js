@@ -42,7 +42,7 @@ const Heading = ({ level, children }) => {
 
 Heading.propTypes = {
   level: PropTypes.number,
-  children: PropTypes.array,
+  children: PropTypes.string,
 }
 
 export default Heading

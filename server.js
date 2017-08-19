@@ -5,9 +5,10 @@ const next = require('next')
 const cookieParser = require('cookie-parser')
 const multer = require('multer')
 const body = require('body-parser')
-const session = require('express-session')
 const serve = require('serve-static')
+const session = require('express-session')
 const api = require('./api')
+compression = require('compression')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -20,6 +21,7 @@ app.prepare()
   .then(() => {
     const server = express()
     server.use(cookieParser(cookieSecret))
+    server.use(compression())
     server.use(body.urlencoded({ extended: true }))
     server.use(body.json())
     server.use(multer())
@@ -60,7 +62,9 @@ app.prepare()
       return handle(req, res)
     })
 
-
+    keystone.list('Configuration').model.update({active: true}, {
+      $set: { cache_key: Date.now()}
+    })
     // server.listen(3000, (err) => {
     //   if (err) throw err
     //   console.log('> Ready on http://localhost:3000')

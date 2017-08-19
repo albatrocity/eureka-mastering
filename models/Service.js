@@ -1,5 +1,6 @@
 const keystone = require('keystone')
 const Types = keystone.Field.Types
+const cacheBuster = require('./cacheBuster')
 
 /**
  * Service Model
@@ -15,6 +16,8 @@ Service.add({
   pricing: { type: Types.Text, initial: true },
   sortOrder: { type: Types.Number, hidden: true },
 })
+
+cacheBuster(Service)
 
 /**
  * Registration
