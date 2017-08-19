@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import ReactPlayer from 'react-player'
 import { initStore, startClock, addCount, serverRenderClock } from '../store'
 import fetch from 'isomorphic-unfetch'
 

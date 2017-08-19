@@ -18,23 +18,23 @@ const PlayerControls = ({audio, onPlay, onPause, state, color}) => {
   return (
     <Box childAlign='center' childJustify='center' grow>
       <Circle>
-        { state.audio_loading &&
-          <Loading />
-        }
-        { (state.audio_playing && state.audio_url === audio.url) ?
-          <Pause
-            size={60}
-            color={color}
-            style={{cursor: 'pointer'}}
-            onClick={() => onPause() }
-          />
+        { state.audio_loading ?
+          <Loading color={color} />
           :
-          <Play
-            size={60}
-            color={color}
-            style={{left: '4px', position: 'relative', cursor: 'pointer'}}
-            onClick={() => onPlay(audio.url) }
-          />
+          (state.audio_playing && state.audio_url === audio.url) ?
+            <Pause
+              size={60}
+              color={color}
+              style={{cursor: 'pointer'}}
+              onClick={() => onPause() }
+            />
+            :
+            <Play
+              size={60}
+              color={color}
+              style={{left: '4px', position: 'relative', cursor: 'pointer'}}
+              onClick={() => onPlay(audio.url) }
+            />
         }
       </Circle>
     </Box>

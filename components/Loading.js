@@ -13,7 +13,7 @@ const DblBounce1 = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #333;
+  background-color: ${p => p.color || '#333'};
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -43,10 +43,10 @@ const DblBounce2 = DblBounce1.extend`
   animation-delay: -1.0s;
 `
 
-const Loading = () => (
+const Loading = ({ color }) => (
   <Spinner>
-    <DblBounce1 />
-    <DblBounce2 />
+    <DblBounce1 color={color} />
+    <DblBounce2 color={color} />
   </Spinner>
 )
 

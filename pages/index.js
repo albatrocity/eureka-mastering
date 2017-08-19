@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import withRedux from 'next-redux-wrapper'
-import ReactPlayer from 'react-player'
 import Box from 'react-boxen'
 import { initStore, startClock, addCount, serverRenderClock } from '../store'
 import fetch from 'isomorphic-unfetch'
+import ReactHowler from 'react-howler'
 
 import MainLayout from '../components/MainLayout'
 import { apiUrl } from '../config/urls'
@@ -19,7 +19,7 @@ import ProjectGrid from '../components/ProjectGrid'
 import SiteTitle from '../components/SiteTitle'
 import Social from '../components/Social'
 
-import setAudioLoading from '../store'
+import { setAudioLoading, pauseAudio } from '../store'
 
 const Section = styled.div`
   margin-top: 2em;
@@ -28,16 +28,17 @@ const Section = styled.div`
   padding-bottom: 2em;
 `
 
-const Index = ({page, services, equipment, projects, contact, config, state, audioLoadingSet, url}) => (
+const Index = ({page, services, equipment, projects, contact, config, state, setAudioLoading, pauseAudio, url}) => (
   <MainLayout contact={contact} config={config} route={url} page={page}>
-    <ReactPlayer
-      url={state.audio_url}
+    {state.audio_url &&
+      <ReactHowler
+      src={state.audio_url}
       playing={state.audio_playing}
-      onBuffer={() => setAudioLoading(true)}
       onPlay={() => setAudioLoading(false)}
-      controls={false}
-      style={{display: 'none'}}
-      />
+      onLoad={() => setAudioLoading(false)}
+      xhrWithCredentials={true}
+      onEnd={() => pauseAudio()} />
+    }
     <div id='about'>
       <ImageCarousel images={page.images} opacity='0.6' height={'270px'} abstract={true}/>
       <ConstrainedContainer padding={'1em'}>
@@ -94,4 +95,4 @@ const mapStateToProps = (state) => ({
   state: state.app,
 })
 
-export default withRedux(initStore, mapStateToProps, { setAudioLoading })(Index)
+export default withRedux(initStore, mapStateToProps, { setAudioLoading, pauseAudio })(Index)

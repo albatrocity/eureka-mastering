@@ -22,6 +22,7 @@ export const appReducer = (state = initialState, action) => {
     case actionTypes.AUDIO_PLAY:
       return Object.assign({}, state, {
         audio_playing: true,
+        audio_loading: true,
         audio_url: action.payload,
       })
     case actionTypes.AUDIO_PAUSE:
