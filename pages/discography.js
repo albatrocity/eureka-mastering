@@ -30,14 +30,15 @@ const Section = styled.div`
 
 const Discography = ({page, clients, projects, contact, config, state, audioLoadingSet, url}) => (
   <MainLayout contact={contact} config={config} route={url} page={page}>
-    <ReactPlayer
-      url={state.audio_url}
+    {state.audio_url &&
+      <ReactHowler
+      src={state.audio_url}
       playing={state.audio_playing}
-      onBuffer={() => setAudioLoading(true)}
       onPlay={() => setAudioLoading(false)}
-      controls={false}
-      style={{display: 'none'}}
-      />
+      onLoad={() => setAudioLoading(false)}
+      xhrWithCredentials={true}
+      onEnd={() => pauseAudio()} />
+    }
     <div>
       <ConstrainedContainer padding={'1em'}>
         <Social color={config.main_color} />
