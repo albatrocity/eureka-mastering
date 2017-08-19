@@ -86,6 +86,8 @@ MainLayout.propTypes = {
   contact: PropTypes.object,
   route: PropTypes.object,
   children: PropTypes.array,
+  toggleMenu: PropTypes.func,
+  menu: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({

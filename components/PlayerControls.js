@@ -1,8 +1,7 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Box from 'react-boxen'
-import units from '../config/units'
-import { gray, grayTrans, white } from '../config/colors'
 import Play from 'react-icons/lib/io/play'
 import Pause from 'react-icons/lib/io/pause'
 import Loading from './Loading'
@@ -15,7 +14,7 @@ const Circle = styled.div`
   text-align: center;
 `
 
-const PlayerControls = ({audio, onPlay, onPause, state, id, color}) => {
+const PlayerControls = ({audio, onPlay, onPause, state, color}) => {
   return (
     <Box childAlign='center' childJustify='center' grow>
       <Circle>
@@ -43,6 +42,12 @@ const PlayerControls = ({audio, onPlay, onPause, state, id, color}) => {
 }
 
 PlayerControls.propTypes = {
+  audio: PropTypes.object,
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func,
+  state: PropTypes.object,
+  id: PropTypes.string,
+  color: PropTypes.string,
 }
 
 export default PlayerControls

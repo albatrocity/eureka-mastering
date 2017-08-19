@@ -1,12 +1,12 @@
+import React from 'react'
 import styled from 'styled-components'
 
 import FadeThrough from './FadeThrough/FadeThroughContainer'
 import PropTypes from 'prop-types'
-import media from '../config/media'
 import { black } from '../config/colors'
 
 const ImageCarousel = (props) => {
-  const { images, children, opacity, abstract, height, fadeDuration, delay } = props
+  const { images, children, abstract, height, fadeDuration, delay } = props
 
   const config = {
     delay: delay || 5000,
@@ -50,6 +50,11 @@ const ImageCarousel = (props) => {
 
 ImageCarousel.propTypes = {
   images: PropTypes.array,
+  children: PropTypes.array,
+  abstract: PropTypes.boolean,
+  height: PropTypes.string,
+  fadeDuration: PropTypes.number,
+  delay: PropTypes.number,
 }
 
 export default ImageCarousel

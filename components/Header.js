@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { gray, blue } from '../config/colors'
+import { blue } from '../config/colors'
 import styled from 'styled-components'
 import ConstrainedContainer from './ConstrainedContainer'
 import SiteTitle from './SiteTitle'
@@ -60,7 +60,8 @@ Header.propTypes = {
   route: PropTypes.object,
   isSticky: PropTypes.bool,
   toggleMenu: PropTypes.func,
-  menu: PropTypes.object
+  menu: PropTypes.object,
+  isMenuOpen: PropTypes.boolean,
 }
 
 export default Header
