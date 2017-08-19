@@ -61,7 +61,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, aud
         <Heading>Equipment</Heading>
       </ConstrainedContainer>
       { equipment.images.length > 0 &&
-        <div style={{margin: '2em 0', backgroundColor: black}} >
+        <div style={{margin: '2em 0'}} >
           <ImageCarousel
             images={equipment.images}
             height={'90vw'}

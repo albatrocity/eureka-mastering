@@ -20,7 +20,7 @@ const ImageCarousel = (props) => {
     display: block;
     height: ${height || '400px'};
     width: 100%;
-    background-color: ${black};
+    background-color: transparent;
     background-repeat: no-repeat;
     ${props => props.abstract ? `
       background-position: 50% 100%;
