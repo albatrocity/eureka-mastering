@@ -10,19 +10,20 @@ const ImageCarousel = (props) => {
 
   const config = {
     delay: delay || 5000,
-    height: `${height || '400px'}`,
+    height: height || 'auto',
     width: '100%',
     fadeDuration: fadeDuration
   }
 
   const StyledContainer = styled.div`
-    overflow: hidden;
     display: block;
-    height: ${height || '400px'};
     width: 100%;
+
     background-color: transparent;
     background-repeat: no-repeat;
     ${props => props.abstract ? `
+      overflow: hidden;
+      height: ${height || '400px'};
       background-position: 50% 100%;
       background-size: cover;
       background-attachment: fixed;
@@ -38,8 +39,8 @@ const ImageCarousel = (props) => {
   return (
     <FadeThrough {...config}>
       { images.map((img) => (
-        <StyledContainer abstract={abstract} key={img._id} style={{backgroundImage: `url(${img.url})`}}>
-          { children }
+        <StyledContainer abstract={abstract} key={img._id} style={ abstract ? {backgroundImage: `url(${img.url})`} : {}}>
+          <img src={img.url} style={{width: '100%', maxWidth: '100%', display: 'block'}}/>
         </StyledContainer>
       )
       ) }

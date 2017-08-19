@@ -63,8 +63,7 @@ const Index = ({page, services, equipment, projects, contact, config, state, set
         <div style={{margin: '2em 0'}} >
           <ImageCarousel
             images={equipment.images}
-            height={'90vw'}
-            fadeDuration={1}
+            fadeDuration={1.5}
             delay={4000}
             />
         </div>

@@ -38,7 +38,6 @@ export default class FadeThroughContainer extends Component {
           activeIndex={ this.state.activeIndex }
           delay={ this.props.delay }
           fadeDuration={ this.props.fadeDuration || 3}
-          style={{background: 'blue'}}
         >
           { this.props.children }
         </FadeThroughComponent>
