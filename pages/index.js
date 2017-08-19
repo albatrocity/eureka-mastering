@@ -24,8 +24,6 @@ import { setAudioLoading, pauseAudio } from '../store'
 const Section = styled.div`
   margin-top: 2em;
   margin-bottom: 2em;
-  border-bottom: 1px solid ${gray};
-  padding-bottom: 2em;
 `
 
 const Index = ({page, services, equipment, projects, contact, config, state, setAudioLoading, pauseAudio, url}) => (
