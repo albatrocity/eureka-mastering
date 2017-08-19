@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Link from 'next/link'
 
@@ -13,10 +15,14 @@ const BrandingText = styled.h1`
   line-height: 1em;
 `
 
-const SiteTitle = ({ level, children, color }) => (
+const SiteTitle = ({ color }) => (
   <Container>
     <Link href='/'><BrandingText color={color}>eureka mastering</BrandingText></Link>
   </Container>
 )
+
+SiteTitle.propTypes = {
+  color: PropTypes.string,
+}
 
 export default SiteTitle

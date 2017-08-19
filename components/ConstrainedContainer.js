@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Box from 'react-boxen'
 import styled from 'styled-components'
 
@@ -13,5 +15,9 @@ const ConstrainedContainer = (props) => (
     { props.children }
   </StyledContainer>
 )
+
+ConstrainedContainer.propTypes = {
+  children: PropTypes.array,
+}
 
 export default ConstrainedContainer

@@ -1,14 +1,10 @@
-import styled from 'styled-components'
+import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { playAudio, pauseAudio, advanceAudio } from '../store'
-import Box from 'react-boxen'
-import units from '../config/units'
-import { gray, grayTrans } from '../config/colors'
-import Play from 'react-icons/lib/io/play'
-import Pause from 'react-icons/lib/io/pause'
 import AlbumCover from './AlbumCover'
 import PlayerControls from './PlayerControls'
 
@@ -59,6 +55,14 @@ const ProjectPlayer = ({image, audio, id, state, playAudio, pauseAudio, updatePr
 )
 
 ProjectPlayer.propTypes = {
+  image: PropTypes.object,
+  audio: PropTypes.object,
+  id: PropTypes.string,
+  playAudio: PropTypes.func,
+  pauseAudio: PropTypes.func,
+  state: PropTypes.object,
+  updateProgress: PropTypes.func,
+  config: PropTypes.object,
 }
 
 const mapStateToProps = (state) => ({

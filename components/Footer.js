@@ -1,7 +1,6 @@
-import Box from 'react-boxen'
-import NavLink from './NavLink'
-import units from '../config/units'
-import { gray, blue, gold, black } from '../config/colors'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { gray, black } from '../config/colors'
 import styled from 'styled-components'
 import ConstrainedContainer from './ConstrainedContainer'
 
@@ -24,6 +23,11 @@ const Footer = (props) => {
       </ConstrainedContainer>
     </StyledFooter>
   )
+}
+
+Footer.propTypes = {
+  color: PropTypes.string,
+  contact: PropTypes.object,
 }
 
 export default Footer

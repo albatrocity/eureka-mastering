@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import media from '../../config/media'
 import units from '../../config/units'
@@ -36,6 +38,11 @@ const Heading = ({ level, children }) => {
       return <H1>{children}</H1>
   }
 
+}
+
+Heading.propTypes = {
+  level: PropTypes.number,
+  children: PropTypes.array,
 }
 
 export default Heading

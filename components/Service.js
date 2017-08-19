@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import React from 'react'
+import PropTypes from 'prop-types'
 import Box from 'react-boxen'
 import styled from 'styled-components'
 import { grayShade1, gray } from '../config/colors'
@@ -21,5 +22,9 @@ const Service = ({ service }) => (
     <Pricing>{ service.pricing }</Pricing>
   </StyledBox>
 )
+
+Service.propTypes = {
+  service: PropTypes.object,
+}
 
 export default Service

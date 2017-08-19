@@ -1,7 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Box from 'react-boxen'
-import styled from 'styled-components'
-import { grayShade1, gray } from '../config/colors'
-import units from '../config/units'
 import Project from '../components/Project'
 
 const boxOptions = {
@@ -14,10 +13,15 @@ const boxOptions = {
   childWrap: 'wrap',
 }
 
-const ProjectGrid = ({ items, itemComponent, config }) => (
+const ProjectGrid = ({ items, config }) => (
   <Box {...boxOptions}>
     { items.map((item) => <Project config={config} key={item._id} project={item}/>) }
   </Box>
 )
+
+ProjectGrid.propTypes = {
+  items: PropTypes.array,
+  config: PropTypes.object,
+}
 
 export default ProjectGrid

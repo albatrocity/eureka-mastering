@@ -1,9 +1,8 @@
+import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Box from 'react-boxen'
 import units from '../config/units'
-import media from '../config/media'
-import { gray, grayTrans } from '../config/colors'
 import Link from 'next/link'
 
 const StyledAnchor = styled.a`
@@ -12,8 +11,6 @@ const StyledAnchor = styled.a`
   opacity: 0.7;
   transition: 0.4s all;
   padding: 0.5em 0.8em;
-  ${media.phone`padding: 0.7em 0.5em; font-size: 0.8em`}
-  ${media.sixplus`padding: 0.7em 0.5em; font-size: 0.8em`}
   text-decoration: none;
   font-weight: 100;
   cursor: pointer;
@@ -44,7 +41,6 @@ const NavLink = (props) => {
   const BoxNavLink = styled(BoxWrapper)`
     cursor: pointer;
   `
-  const isCurrentPage = props.route.pathname.replace('/','') === props.id
   return (
     <BoxNavLink color={props.color} inPage={props.inPage} href={`#${props.id}`}>
       { props.title }
@@ -54,6 +50,11 @@ const NavLink = (props) => {
 
 NavLink.propTypes = {
   className: PropTypes.string,
+  onNavigate: PropTypes.func,
+  color: PropTypes.string,
+  title: PropTypes.string,
+  inPage: PropTypes.bool,
+  id: PropTypes.string,
 }
 
 export default NavLink

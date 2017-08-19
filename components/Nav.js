@@ -1,7 +1,6 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Box from 'react-boxen'
-import units from '../config/units'
-import styled from 'styled-components'
-import media from '../config/media'
 import NavLink from './NavLink'
 
 const Nav = (props) => (
@@ -12,5 +11,13 @@ const Nav = (props) => (
     <NavLink onNavigate={props.onNavigate} color={props.color} inPage={props.inPage} route={props.route} id='services' title='Services' />
   </Box>
 )
+
+Nav.propTypes = {
+  layout: PropTypes.string,
+  onNavigate: PropTypes.func,
+  color: PropTypes.string,
+  route: PropTypes.object,
+  inPage: PropTypes.bool,
+}
 
 export default Nav

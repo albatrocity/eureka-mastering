@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import Box from 'react-boxen'
 import { SocialIcon } from 'react-social-icons'
 import { blue } from '../config/colors'
@@ -15,5 +17,9 @@ const Social = ({color}) => (
     <SocialIcon style={style} color={color || blue} url="http://instagram.com/eurekamastering" />
   </Box>
 )
+
+Social.propTypes = {
+  color: PropTypes.string,
+}
 
 export default Social

@@ -61,7 +61,7 @@ Header.propTypes = {
   isSticky: PropTypes.bool,
   toggleMenu: PropTypes.func,
   menu: PropTypes.object,
-  isMenuOpen: PropTypes.boolean,
+  isMenuOpen: PropTypes.bool,
 }
 
 export default Header

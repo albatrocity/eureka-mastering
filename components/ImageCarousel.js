@@ -51,7 +51,7 @@ const ImageCarousel = (props) => {
 ImageCarousel.propTypes = {
   images: PropTypes.array,
   children: PropTypes.array,
-  abstract: PropTypes.boolean,
+  abstract: PropTypes.bool,
   height: PropTypes.string,
   fadeDuration: PropTypes.number,
   delay: PropTypes.number,

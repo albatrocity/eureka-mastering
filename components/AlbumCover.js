@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Box from 'react-boxen'
 
@@ -26,5 +28,10 @@ const AlbumCover = ({ image, active }) => (
     &nbsp;
   </Thumbnail>
 )
+
+AlbumCover.propTypes = {
+  image: PropTypes.string,
+  active: PropTypes.bool,
+}
 
 export default AlbumCover
