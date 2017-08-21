@@ -30,7 +30,8 @@ export default class FadeThroughContainer extends Component {
   render() {
     const style = {
       width: this.props.width,
-      height: this.props.height
+      height: this.props.height,
+      transform: 'translate3d(0, 0, 0)'
     }
     return (
       <div style={ style }>
