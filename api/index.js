@@ -13,16 +13,10 @@ const servePage = (req, res) => {
   switch (req.params.slug) {
     case 'home':
       return serveHomePage(req, res)
-      break
     case 'discography':
       return serveDiscographyPage(req, res)
-      break
     default:
       return res.json({})
-
-  }
-  if (req.params.slug === 'home') {
-  } else {
   }
 }
 
@@ -44,48 +38,61 @@ const sizeImage = (response, width, height) => {
   })
 }
 
-const serveHomePage = (req, res) => {
+const updateHomeCache = (req, config, contentKey) => {
   const Page = req.keystone.list('Page')
   const Service = req.keystone.list('Service')
-  const Client = req.keystone.list('Client')
   const Project = req.keystone.list('Project')
+  const Configuration = req.keystone.list('Configuration')
+
+  cache.put('cache_key', config ? config.cache_key : Date.now())
+  return Promise.all([
+    Page.model.findOne({slug: req.params.slug}),
+    Page.model.findOne({slug: 'equipment'}),
+    Service.model.find({}).sort('sortOrder'),
+    Project.model.find({ featured: true }).sort('sortOrder'),
+    Page.model.findOne({slug: 'contact'}),
+    Configuration.model.findOne({active: true}),
+  ])
+    .then((results) => {
+      const response = {
+        page: fillImage(results[0]),
+        equipment: sizeImage(results[1]),
+        services: results[2],
+        projects: results[3],
+        contact: results[4],
+        config: results[5],
+      }
+      cache.put(contentKey, response)
+      return cache.get(contentKey)
+    })
+}
+
+const serveHomePage = (req, res) => {
   const Configuration = req.keystone.list('Configuration')
 
   return Configuration.model.findOne({ active: true }).then((config) => {
     const contentKey = `${req.params.slug}_page`
-    console.log('cache cache key', cache.get('cache_key'));
-    console.log('config cache key', config.cache_key);
+    console.log('cache cache key', cache.get('cache_key'))
+    console.log('config cache key', config.cache_key)
     if (config && cache.get('cache_key') === config.cache_key) {
-      console.log('cached result');
-      return res.json(cache.get(contentKey))
-    } else {
-      console.log('cache outdated');
-      cache.put('cache_key', config ? config.cache_key : Date.now())
-      return Promise.all([
-        Page.model.findOne({slug: req.params.slug}),
-        Page.model.findOne({slug: 'equipment'}),
-        Service.model.find({}).sort('sortOrder'),
-        Project.model.find({ featured: true }).sort('sortOrder'),
-        Page.model.findOne({slug: 'contact'}),
-        Configuration.model.findOne({active: true}),
-      ])
-        .then((results) => {
-          const response = {
-            page: fillImage(results[0]),
-            equipment: sizeImage(results[1]),
-            services: results[2],
-            projects: results[3],
-            contact: results[4],
-            config: results[5],
-          }
-          cache.put(contentKey, response)
-          res.json(response)
+      console.log('cached result')
+      if (cache.get(contentKey)) {
+        return res.json(cache.get(contentKey))
+      } else {
+        return updateCache(req, config, contentKey).then((content) => {
+          res.json(content)
         })
+      }
+    } else {
+      console.log('cache outdated')
+      return updateHomeCache(req, config, contentKey).then((content) => {
+        res.json(content)
+      })
     }
   })
-  .catch((err) => {
-    console.log(err); res.json(err)
-  })
+    .catch((err) => {
+      console.log(err); res.json(err)
+    })
 }
 
 const serveDiscographyPage = (req, res) => {
