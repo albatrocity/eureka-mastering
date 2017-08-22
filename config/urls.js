@@ -1,1 +1,1 @@
-export const apiUrl = `${process.env.APP_HOST || 'https://eureka-mastering.herokuapp.com'}/api`
+export const apiUrl = `${process.env.APP_HOST || 'http://www.eurekamastering.com'}/api`
