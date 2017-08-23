@@ -52,7 +52,7 @@ const StyledWrapper = styled.div`
 `
 
 const MainLayout = (props) => (
-  <StyledLayout color={props.config.main_color}>
+  <StyledLayout color={props.config.main_color} id='outer-container'>
     <Head>
       <title>{ `${props.page.slug === 'home' ? '' : `${props.page.name} | `}Eureka Mastering` }</title>
       <meta name="description" content={props.config.meta_description} />

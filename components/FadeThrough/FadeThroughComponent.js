@@ -12,7 +12,7 @@ export default class FadeThroughComponent extends Component {
       opacity: '0',
       width: '100%',
       transform: 'translate3d(0, 0, 0)',
-      'will-change': 'transform',
+      willChange: 'transform',
     }
 
     const activeStyle = {
@@ -21,7 +21,7 @@ export default class FadeThroughComponent extends Component {
       opacity: '1',
       width: '100%',
       transform: 'translate3d(0, 0, 0)',
-      'will-change': 'transform',
+      willChange: 'transform',
     }
 
     return (
