@@ -1,1 +1,1 @@
-export const apiUrl = `${process.env.APP_HOST || 'http://www.eurekamastering.com'}/api`
+export const apiUrl = `${process.env.APP_HOST || '//www.eurekamastering.com'}/api`
