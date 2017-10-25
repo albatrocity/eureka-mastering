@@ -69,8 +69,9 @@ const updateHomeCache = (req, config, contentKey) => {
 
 const serveHomePage = (req, res) => {
   const Configuration = req.keystone.list('Configuration')
-
+  console.log('serveHomePage')
   return Configuration.model.findOne({ active: true }).then((config) => {
+    console.log('FOUND CONFIG', config)
     const contentKey = `${req.params.slug}_page`
     console.log('cache cache key', cache.get('cache_key'))
     console.log('config cache key', config.cache_key)
@@ -79,7 +80,7 @@ const serveHomePage = (req, res) => {
       if (cache.get(contentKey)) {
         return res.json(cache.get(contentKey))
       } else {
-        return updateCache(req, config, contentKey).then((content) => {
+        return updateHomeCache(req, config, contentKey).then((content) => {
           res.json(content)
         })
       }
