@@ -111,4 +111,7 @@ const mapStateToProps = state => ({
   menu: state.burgerMenu
 });
 
-export default connect(mapStateToProps, { toggleMenu })(MainLayout);
+export default connect(
+  mapStateToProps,
+  { toggleMenu }
+)(MainLayout);
