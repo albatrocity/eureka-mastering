@@ -41,7 +41,8 @@
     "redux": "^3.7.2",
     "redux-burger-menu": "^0.2.7",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^2.4.1"
+    "styled-components": "^2.4.1",
+    "webpack": "^4.28.4"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.8",
